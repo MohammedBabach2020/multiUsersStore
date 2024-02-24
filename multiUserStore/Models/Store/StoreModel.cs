@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using multiUserStore.Models.Account;
+using multiUserStore.Models.Product;
 
 namespace multiUserStore.Models.Store
 {
@@ -25,6 +26,10 @@ namespace multiUserStore.Models.Store
 
         [Required]
         public List<Category> Categories { get; set; } = [];
+
+
+        [Required]
+        public required ICollection<Products> products { get; set; }
 
         [Required]
         public required DateTime CreatedDate { get; set; }

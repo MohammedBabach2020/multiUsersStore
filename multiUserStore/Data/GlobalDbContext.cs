@@ -22,7 +22,10 @@ namespace multiUserStore.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
+
             modelBuilder.Entity<StoreModel>()
+        
               .HasOne(s => s.owner)
               .WithMany(c => c.Stores)
               .HasForeignKey(s => s.OwnerId)
