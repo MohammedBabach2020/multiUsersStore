@@ -13,10 +13,7 @@ namespace multiUserStore.Models.Store
         public int Id { get; set; }
 
 
-        [Required]
-        public int OwnerId { get; set; }
-        [Required]
-        public required User owner { get; set; }
+
 
         [Required]
         public required string Name { get; set; }
@@ -24,15 +21,27 @@ namespace multiUserStore.Models.Store
         [Required]
         public required string Description { get; set; }
 
-        [Required]
-        public List<Category> Categories { get; set; } = [];
+     
+    
 
 
         [Required]
-        public required ICollection<Products> products { get; set; }
+        public required User Owner { get; set; }
+
+
+
+        [Required]
+        public int OwnerId { get; set; }
+
 
         [Required]
         public required DateTime CreatedDate { get; set; }
+
+    
+
+      
+        public  ICollection<Products> Products { get; set; }
+        public ICollection<CategoryToStore> Categories { get; set; }
 
     }
 }

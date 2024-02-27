@@ -24,12 +24,9 @@ namespace multiUserStore.Models.Account
         [MinLength(8)]
         public required string Password { get; set; }
 
-        [Required]
-        public required StoreModel Store { get; set; }
-
-
-        [Required]
-        public required int StoreId { get; set; }
+ 
+        public  StoreModel Store { get; set; }
+        public  int StoreId { get; set; }
         [Required]
         public required DateTime CreatedDate { get; set; }
     }

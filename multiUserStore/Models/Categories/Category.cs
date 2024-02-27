@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using multiUserStore.Models.Store;
 
 namespace multiUserStore.Models.Categories
 {
@@ -14,5 +15,7 @@ namespace multiUserStore.Models.Categories
         public required string name { get; set; }
         [Required]
         public required DateTime CreatedDate { get; set; }
+
+        public ICollection<CategoryToStore> Stores { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using multiUserStore.Models.Store;
 
 namespace multiUserStore.Models.Product
 {
@@ -12,7 +13,8 @@ namespace multiUserStore.Models.Product
 
         [Required]
         public required int StoreId;
-
+        [Required]
+        public required StoreModel Store;
 
         [Required]
         public  required string Name { get; set; }
