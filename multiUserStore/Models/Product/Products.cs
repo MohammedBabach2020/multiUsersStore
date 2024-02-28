@@ -11,10 +11,7 @@ namespace multiUserStore.Models.Product
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required]
-        public required int StoreId;
-        [Required]
-        public required StoreModel Store;
+     
 
         [Required]
         public  required string Name { get; set; }
@@ -39,6 +36,11 @@ namespace multiUserStore.Models.Product
 
         [Required]
         public required DateTime CreatedDate { get; set; }
+
+        [Required]
+        public required int StoreId;
+        [Required]
+        public required StoreModel Store;
     }
 
 }

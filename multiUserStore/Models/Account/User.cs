@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using multiUserStore.Models.Orders;
 using multiUserStore.Models.Store;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,10 +25,14 @@ namespace multiUserStore.Models.Account
         [MinLength(8)]
         public required string Password { get; set; }
 
- 
-        public  StoreModel Store { get; set; }
-        public  int StoreId { get; set; }
         [Required]
         public required DateTime CreatedDate { get; set; }
+
+        public StoreModel Store { get; set; }
+        public int StoreId { get; set; }
+
+        public ICollection<Order> Order { get; set; }    
+
+        public int OrderId { get; set; }    
     }
 }

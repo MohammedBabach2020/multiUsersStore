@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using multiUserStore.Data;
@@ -11,9 +12,11 @@ using multiUserStore.Data;
 namespace multiUserStore.Migrations
 {
     [DbContext(typeof(GlobalDbContext))]
-    partial class GlobalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240228153853_order_ordeDetails_with_relations")]
+    partial class order_ordeDetails_with_relations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,39 +61,6 @@ namespace multiUserStore.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("multiUserStore.Models.Cart.CartItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<float>("Quantity")
-                        .HasColumnType("real");
-
-                    b.Property<float>("amount")
-                        .HasColumnType("real");
-
-                    b.Property<int>("client_id")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("imagepPath")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<float>("price")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CartItem");
                 });
 
             modelBuilder.Entity("multiUserStore.Models.Categories.Category", b =>
@@ -301,7 +271,7 @@ namespace multiUserStore.Migrations
                     b.HasOne("multiUserStore.Models.Account.User", "client")
                         .WithMany("Order")
                         .HasForeignKey("client_id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("multiUserStore.Models.Store.StoreModel", "store")
@@ -320,7 +290,7 @@ namespace multiUserStore.Migrations
                     b.HasOne("multiUserStore.Models.Orders.Order", "order")
                         .WithMany("Details")
                         .HasForeignKey("order_id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("order");
